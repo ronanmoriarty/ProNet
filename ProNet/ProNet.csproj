@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="IProNet.cs" />
     <Compile Include="ProNet.cs" />
+    <Compile Include="ProNetParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
