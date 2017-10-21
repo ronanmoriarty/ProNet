@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 using NUnit.Framework;
 
 namespace ProNet.Test.Customer
@@ -15,7 +14,7 @@ namespace ProNet.Test.Customer
         public void Parses_all_programmers()
         {
             _network = new ProNetParser().Parse(GetFullPath(FileName));
-            Assert.That(_network.Programmers.Count(), Is.EqualTo(10));
+            Assert.That(_network.Programmers.Count, Is.EqualTo(10));
         }
 
         private string GetFullPath(string filename)

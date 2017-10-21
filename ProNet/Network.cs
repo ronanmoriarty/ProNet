@@ -4,6 +4,11 @@ namespace ProNet
 {
     public class Network
     {
-        public IEnumerable<Programmer> Programmers { get; set; }
+        public Network()
+        {
+            Programmers = new List<Programmer>();
+        }
+
+        public IList<Programmer> Programmers { get; set; }
     }
 }

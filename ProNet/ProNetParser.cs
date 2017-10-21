@@ -15,11 +15,26 @@ namespace ProNet
             _filename = filename;
             var xmlReaderSettings = GetXmlReaderSettings();
             var xmlReader = XmlReader.Create(filename, xmlReaderSettings);
+            return AddProgrammers(xmlReader);
+        }
+
+        private Network AddProgrammers(XmlReader xmlReader)
+        {
+            var network = new Network();
             while (xmlReader.Read())
             {
+                switch (xmlReader.NodeType)
+                {
+                    case XmlNodeType.Element:
+                        if (xmlReader.Name == "Programmer")
+                        {
+                            network.Programmers.Add(new Programmer());
+                        }
+                        break;
+                }
             }
 
-            return null;
+            return network;
         }
 
         private static void EnsureFileExists(string filename)
