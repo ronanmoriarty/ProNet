@@ -1,7 +1,18 @@
+using System;
+using System.IO;
+
 namespace ProNet
 {
     public class ProNet : IProNet
     {
+        public ProNet(string filename)
+        {
+            if (!File.Exists(filename))
+            {
+                throw new ArgumentException($"File {filename} was not found");
+            }
+        }
+
         public string[] Skills(string programmer)
         {
             throw new System.NotImplementedException();

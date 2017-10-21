@@ -7,7 +7,7 @@ namespace ProNet.Test.Customer
     {
         protected override IProNet LoadProNet(string filename)
         {
-            return new ProNet();
+            return new ProNet(filename);
         }
     }
 }
