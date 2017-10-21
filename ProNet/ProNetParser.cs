@@ -28,7 +28,9 @@ namespace ProNet
                     case XmlNodeType.Element:
                         if (xmlReader.Name == "Programmer")
                         {
-                            network.Programmers.Add(new Programmer());
+                            var programmerName = xmlReader.GetAttribute("name");
+                            Console.WriteLine($"Programmer name is : {programmerName}");
+                            network.Programmers.Add(new Programmer(programmerName));
                         }
                         break;
                 }
