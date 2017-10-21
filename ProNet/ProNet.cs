@@ -11,21 +11,33 @@ namespace ProNet
 
         public ProNet(string filename)
         {
+            EnsureFileExists(filename);
+            _filename = filename;
+            var xmlReaderSettings = GetXmlReaderSettings();
+            var xmlReader = XmlReader.Create(filename, xmlReaderSettings);
+            while (xmlReader.Read()) { }
+        }
+
+        private static void EnsureFileExists(string filename)
+        {
             if (!File.Exists(filename))
             {
                 throw new ArgumentException($"File {filename} was not found");
             }
-            _filename = filename;
+        }
 
+        private XmlReaderSettings GetXmlReaderSettings()
+        {
             var xmlReaderSettings = new XmlReaderSettings();
-            var proNetSchemaPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ProNet.xsd");
-            xmlReaderSettings.Schemas.Add(null ,proNetSchemaPath);
+            xmlReaderSettings.Schemas.Add(null, GetProNetSchemaPath());
             xmlReaderSettings.ValidationType = ValidationType.Schema;
             xmlReaderSettings.ValidationEventHandler += HandleValidationEvent;
+            return xmlReaderSettings;
+        }
 
-            var xmlReader = XmlReader.Create(filename, xmlReaderSettings);
-
-            while (xmlReader.Read()) { }
+        private static string GetProNetSchemaPath()
+        {
+            return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ProNet.xsd");
         }
 
         void HandleValidationEvent(object sender, ValidationEventArgs e)
