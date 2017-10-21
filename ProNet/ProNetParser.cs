@@ -9,7 +9,7 @@ namespace ProNet
     {
         private string _filename;
 
-        public void Parse(string filename)
+        public Network Parse(string filename)
         {
             EnsureFileExists(filename);
             _filename = filename;
@@ -18,6 +18,8 @@ namespace ProNet
             while (xmlReader.Read())
             {
             }
+
+            return null;
         }
 
         private static void EnsureFileExists(string filename)

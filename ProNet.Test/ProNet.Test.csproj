@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Customer\CustomerTestsImpl.cs" />
     <Compile Include="Customer\AbstractCustomerTests.cs" />
+    <Compile Include="Customer\ProNetParserTests.cs" />
     <Compile Include="Customer\ProNetStub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
